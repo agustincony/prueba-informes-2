@@ -175,6 +175,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);max-width:480px;
         <div onclick="selectFecha('f18')">F18 — Atlético del Rosario</div>
         <div onclick="selectFecha('f19')">F19 — Los Tilos</div>
         <div onclick="selectFecha('f20')">F20 — Matreros</div>
+        <div onclick="selectFecha('f21')">F21 · vs Cuba</div>
       </div>
     </div>
   </div>
@@ -223,6 +224,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);max-width:480px;
 // ── Configuración de fechas disponibles ──────────────────────────────────────
 const BASE_URL = 'https://raw.githubusercontent.com/agustincony/Informes-GPS/main/datos';
 const FECHAS_CONFIG = [
+  { key: 'f21', file: 'f21.json' },
   { key: 'f20', file: 'f20.json' },
   { key: 'f19', file: 'f19.json' },
   { key: 'f18', file: 'f18.json' },
