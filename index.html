@@ -171,6 +171,10 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);max-width:480px;
     <div class="fecha-dd" id="fecha-dd">
       <p id="hdr-sub" onclick="toggleFechaDD()" style="cursor:pointer;user-select:none">FECHA 19 · TOP 14 URBA 2026 · VISITA ▾</p>
       <div class="fecha-opts" id="fecha-opts">
+        <div onclick="selectFecha('f13')">F13 — Alumni</div>
+        <div onclick="selectFecha('f14')">F14 — Champagnat</div>
+        <div onclick="selectFecha('f15')">F15 — Hindú</div>
+        <div onclick="selectFecha('f16')">F16 — La Plata</div>
         <div onclick="selectFecha('f17')">F17 — Regatas</div>
         <div onclick="selectFecha('f18')">F18 — Atlético del Rosario</div>
         <div onclick="selectFecha('f19')">F19 — Los Tilos</div>
@@ -229,6 +233,10 @@ const FECHAS_CONFIG = [
   { key: 'f19', file: 'f19.json' },
   { key: 'f18', file: 'f18.json' },
   { key: 'f17', file: 'f17.json' },
+  { key: 'f16', file: 'f16.json' },  // ← agregar
+  { key: 'f15', file: 'f15.json' },  // ← agregar
+  { key: 'f14', file: 'f14.json' },  // ← agregar
+  { key: 'f13', file: 'f13.json' },  // ← agregar
 ];
 
 // Caché de datos ya cargados
