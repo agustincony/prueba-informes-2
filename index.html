@@ -44,7 +44,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);max-width:480px;
 .hb-score{font-family:var(--fbc);font-size:24px;font-weight:900;line-height:1;color:var(--fg)}
 .hb-score .sep{color:var(--cel)}
 .hb-label{font-size:9px;color:#aaa;font-family:var(--fbc)}
-.hb-label b{color:var(--win)}
+.hb-label b.win{color:var(--win)}.hb-label b.loss{color:#C62828}
 .flt{background:#fff;border-bottom:2px solid var(--bord);padding:6px 10px;display:flex;flex-direction:column;gap:5px;position:sticky;top:60px;z-index:59;box-shadow:0 1px 4px rgba(0,0,0,.05)}
 .flt-lbl{font-family:var(--fbc);font-size:9px;color:#aaa;font-weight:700;letter-spacing:.8px;margin-bottom:2px}
 .flt-row{display:flex;gap:4px}
@@ -316,7 +316,7 @@ async function setFecha(key,el){
   document.querySelectorAll('#sort-tabs .ptab').forEach((b,i)=>b.classList.toggle('active',i===0));
   const sc=getScores()[activeTeam]||getScores().total||{};
   document.getElementById('hdr-score').innerHTML=(sc.casi!==undefined?sc.casi:'–')+'<span class="sep">–</span>'+(sc.rival!==undefined?sc.rival:'–');
-  document.getElementById('hdr-label').innerHTML=sc.label?'<b>'+sc.label+'</b>':'&nbsp;';
+  document.getElementById('hdr-label').innerHTML=sc.label?'<b class="'+(sc.label==='DERROTA'?'loss':'win')+'">'+sc.label+'</b>':'&nbsp;';
   render();
 }
 
@@ -388,7 +388,7 @@ function setTeam(t,el){
   el.classList.add(t==='total'||t==='Primera'?'ap':t==='Intermedia'?'ai':'aa');
   const s=getScores()[t]||getScores().total;
   document.getElementById('hdr-score').innerHTML=t==='total'?'':`${s.casi}<span class="sep">–</span>${s.rival}`;
-  document.getElementById('hdr-label').innerHTML=s.label?`<b>${s.label}</b>`:'&nbsp;';
+  document.getElementById('hdr-label').innerHTML=s.label?`<b class="${s.label==='DERROTA'?'loss':'win'}">${s.label}</b>`:'&nbsp;';
   render();
 }
 
@@ -982,7 +982,7 @@ function render(){
     document.getElementById('footer-txt').textContent=m.footer;
     const sc=getScores()['Primera']||{};
     document.getElementById('hdr-score').innerHTML=(sc.casi!==undefined?sc.casi:'–')+'<span class="sep">–</span>'+(sc.rival!==undefined?sc.rival:'–');
-    document.getElementById('hdr-label').innerHTML=sc.label?'<b>'+sc.label+'</b>':'&nbsp;';
+    document.getElementById('hdr-label').innerHTML=sc.label?'<b class="'+(sc.label==='DERROTA'?'loss':'win')+'">'+sc.label+'</b>':'&nbsp;';
     render();
     overlay.remove();
   } catch(e) {
