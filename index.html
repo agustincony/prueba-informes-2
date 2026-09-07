@@ -171,6 +171,18 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);max-width:480px;
     <div class="fecha-dd" id="fecha-dd">
       <p id="hdr-sub" onclick="toggleFechaDD()" style="cursor:pointer;user-select:none">FECHA 19 · TOP 14 URBA 2026 · VISITA ▾</p>
       <div class="fecha-opts" id="fecha-opts">
+        <div onclick="selectFecha('f13')">F1 — Champagnat/div>
+        <div onclick="selectFecha('f14')">F2 — Hindú</div>
+        <div onclick="selectFecha('f15')">F3 — La Plata</div>
+        <div onclick="selectFecha('f16')">F4 — Regatas</div>
+        <div onclick="selectFecha('f17')">F5 — Atlético del Rosario/d
+        <div onclick="selectFecha('f13')">F6 — Los Tilos</div>
+        <div onclick="selectFecha('f14')">F7 — Matreros</div>
+        <div onclick="selectFecha('f15')">F8 — Cuba</div>
+        <div onclick="selectFecha('f16')">F9 — Biei</div>
+        <div onclick="selectFecha('f17')">F10 — Belgrano</div>
+        <div onclick="selectFecha('f18')">F11 — Sic</div>
+        <div onclick="selectFecha('f19')">F12 — Newman</div>
         <div onclick="selectFecha('f13')">F13 — Alumni</div>
         <div onclick="selectFecha('f14')">F14 — Champagnat</div>
         <div onclick="selectFecha('f15')">F15 — Hindú</div>
@@ -233,10 +245,22 @@ const FECHAS_CONFIG = [
   { key: 'f19', file: 'f19.json' },
   { key: 'f18', file: 'f18.json' },
   { key: 'f17', file: 'f17.json' },
-  { key: 'f16', file: 'f16.json' },  // ← agregar
-  { key: 'f15', file: 'f15.json' },  // ← agregar
-  { key: 'f14', file: 'f14.json' },  // ← agregar
-  { key: 'f13', file: 'f13.json' },  // ← agregar
+  { key: 'f16', file: 'f16.json' },  
+  { key: 'f15', file: 'f15.json' },  
+  { key: 'f14', file: 'f14.json' },  
+  { key: 'f13', file: 'f13.json' },
+  { key: 'f12', file: 'f12.json' },
+  { key: 'f11', file: 'f11.json' },
+  { key: 'f10', file: 'f10.json' },
+  { key: 'f9', file: 'f9.json' },
+  { key: 'f8', file: 'f8.json' },
+  { key: 'f7', file: 'f7.json' },
+  { key: 'f6', file: 'f6.json' },
+  { key: 'f5', file: 'f5.json' },
+  { key: 'f4', file: 'f4.json' },
+  { key: 'f3', file: 'f3.json' },
+  { key: 'f2', file: 'f2.json' },
+  { key: 'f1', file: 'f1.json' },  
 ];
 
 // Caché de datos ya cargados
@@ -321,7 +345,7 @@ async function setFecha(key,el){
 }
 
 // DB se asigna dinámicamente
-let activeFecha='f21';
+let activeFecha=FECHAS_CONFIG[0].key;
 let activeTeam='Primera', activeGrps=new Set(['all']);
 let sortMode='group';
 let velMode='abs';
@@ -972,11 +996,12 @@ function render(){
   style.textContent='@keyframes spin{to{transform:rotate(360deg)}}';
   document.head.appendChild(style);
   try {
-    const data = await fetchFecha('f21');
-    buildFechaMeta('f21', data);
-    DB = FECHA_META['f21'].db;
-    activeFecha = 'f21';
-    const m = FECHA_META['f21'];
+    const defaultKey = FECHAS_CONFIG[0].key;
+    const data = await fetchFecha(defaultKey);
+    buildFechaMeta(defaultKey, data);
+    DB = FECHA_META[defaultKey].db;
+    activeFecha = defaultKey;
+    const m = FECHA_META[defaultKey];
     document.getElementById('hdr-title').textContent=m.titulo;
     document.getElementById('hdr-sub').textContent=m.subtitulo+' ▾';
     document.getElementById('footer-txt').textContent=m.footer;
