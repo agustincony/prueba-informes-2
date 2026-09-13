@@ -171,6 +171,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);max-width:480px;
     <div class="fecha-dd" id="fecha-dd">
       <p id="hdr-sub" onclick="toggleFechaDD()" style="cursor:pointer;user-select:none">FECHA 19 · TOP 14 URBA 2026 · VISITA ▾</p>
       <div class="fecha-opts" id="fecha-opts">
+        <div onclick="selectFecha('f22')">F22 — Biei</div>
         <div onclick="selectFecha('f21')">F21 — Cuba</div>
         <div onclick="selectFecha('f20')">F20 — Matreros</div>
         <div onclick="selectFecha('f19')">F19 — Los Tilos</div>
@@ -240,6 +241,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);max-width:480px;
 // ── Configuración de fechas disponibles ──────────────────────────────────────
 const BASE_URL = 'https://raw.githubusercontent.com/agustincony/Informes-GPS/main/datos';
 const FECHAS_CONFIG = [
+  { key: 'f22', file: 'f22.json' },
   { key: 'f21', file: 'f21.json' },
   { key: 'f20', file: 'f20.json' },
   { key: 'f19', file: 'f19.json' },
