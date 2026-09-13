@@ -347,7 +347,7 @@ async function setFecha(key,el){
 }
 
 // DB se asigna dinámicamente
-let activeFecha='f21';
+let activeFecha=FECHAS_CONFIG[0].key;
 let activeTeam='Primera', activeGrps=new Set(['all']);
 let sortMode='group';
 let velMode='abs';
@@ -998,11 +998,12 @@ function render(){
   style.textContent='@keyframes spin{to{transform:rotate(360deg)}}';
   document.head.appendChild(style);
   try {
-    const data = await fetchFecha('f21');
-    buildFechaMeta('f21', data);
-    DB = FECHA_META['f21'].db;
-    activeFecha = 'f21';
-    const m = FECHA_META['f21'];
+    const defaultKey = FECHAS_CONFIG[0].key;
+    const data = await fetchFecha(defaultKey);
+    buildFechaMeta(defaultKey, data);
+    DB = FECHA_META[defaultKey].db;
+    activeFecha = defaultKey;
+    const m = FECHA_META[defaultKey];
     document.getElementById('hdr-title').textContent=m.titulo;
     document.getElementById('hdr-sub').textContent=m.subtitulo+' ▾';
     document.getElementById('footer-txt').textContent=m.footer;
